@@ -33,3 +33,48 @@ body{
     grid-template-rows: 0.8fr 4fr;
     grid-template-columns: 5rem 1fr 1fr 1fr;
 }
+
+.drawer{
+    grid-area: drawer;
+    background-color: var(--drawer-color);
+    width: 5rem;
+    position: fixed;
+    transition: var(--transition-drawer);
+    overflow: hidden;
+    height: 100vh;
+}
+
+.drawer:hover{
+    width: var(--drawer-width);
+}
+
+.menuItem > h1{
+    display: none;
+    margin-left: 5%;
+}
+
+.drawer:hover > .menuItem > h1{
+    display: inline;
+}
+
+.menuItem{
+    color: var(--text-secodnary);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.menuItem > *{
+    cursor: pointer;
+}
+
+
+
+
+.navbar{
+    grid-area: nav;
+}
+
+.content{
+    grid-area: content;
+}
