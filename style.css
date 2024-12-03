@@ -24,18 +24,18 @@
 }
 
 body{
-    width: 100vh;
+    width: 100vw;
     height: 100vh;
     display: grid;
     grid-template-areas: 
     "drawer nav nav nav"
     "drawer content content content";
-    grid-template-rows: 0.8fr 4fr;
+    grid-template-rows: 0.6fr 4fr;
     grid-template-columns: 5rem 1fr 1fr 1fr;
 }
 
 .drawer{
-    grid-area: drawer;
+   /* grid-area: drawer; */
     background-color: var(--drawer-color);
     width: 5rem;
     position: fixed;
@@ -50,11 +50,11 @@ body{
 
 .menuItem > h1{
     display: none;
-    margin-left: 5%;
+    margin-left: 2rem;
 }
 
 .drawer:hover > .menuItem > h1{
-    display: inline;
+    display: flex;
 }
 
 .drawer:hover ~ .navbar,
@@ -73,12 +73,16 @@ body{
     cursor: pointer;
 }
 
-.drawer > div:not(:first-child) > * {
-    padding: 1vw 0.1vw 0.1vw 0vw;
+a {
+    text-decoration: none;
+}
+
+.drawer > *:not(:first-child) > * {
+    padding: 1rem 0.5rem 1rem;
     font-size: calc(20px + 0.2 vw);
     padding-left: 20px;
 }
-.drawer >div:not(:first-child) > img {
+.drawer > *:not(:first-child) > img {
     width: calc(20px + 0.5 vw);
     height: calc(20px + 0.5 vw);
 }
@@ -102,15 +106,17 @@ body{
 
 
 /* Navbar Styling */
-.navbar{
+.navbar {
     grid-area: nav;
     transition: var(--transition-notDrawer);
     border-color: var(--nav-bg-1);
     padding: 1.5rem 3rem;
     border-bottom: 2px solid rgb(219, 219, 219);
+    position: sticky;
+    top: 0;
 }
 
-.topNav{
+.topNav {
     display: grid;
     grid-template-columns: 1fr max-content;
     margin-bottom: 2.5rem;
@@ -215,10 +221,8 @@ img {
     grid-template-rows: min-content 1fr;
     gap: 2rem;
     grid-template-areas: 
-    "project announcments"
-    "project trending";
-    overflow: auto;
-    height: 100%;
+    "projects announcements"
+    "projects trending";
 }
 
 .content h3{
@@ -227,11 +231,19 @@ img {
     margin-bottom: 0.8rem;
 }
 
+.card {
+    background-color: rgba(45, 187, 187, 0.459);
+    padding: 2rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    max-width: 30vw;
+}
+
 .projects {
     grid-area: projects;
 }
 
-.projects ,cards {
+.projects .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-auto-rows: 250px;
@@ -268,4 +280,100 @@ img {
     align-items: center;
     padding-bottom: 5px;
     padding-right: 5px;
+}
+
+
+
+.announcements{
+    grid-area: announcements;
+}
+
+.announcement {
+    width: 25ch;
+    padding: 1rem 0;
+}
+
+.announcement:first-child{
+    padding-top: 0;
+}
+
+.announcement:last-child{
+    padding-bottom: 0;
+}
+
+.announcement h5{
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.announcement p{
+    font-size: .8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.announcement + .announcement {
+    border-top: rgb(115, 115, 115) 1px solid;
+}
+
+.trending {
+    grid-area: trending;
+}
+
+.trending .card {
+    padding: 1.5rem;
+}
+
+.trend{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.trend + .trend {
+    margin-top: 1.5rem;
+}
+
+.trend .account {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.trend .username {
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+}
+
+.trend-1 .gh-avatar2{
+    background: var(--gh-avatar2) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.trend-2 .gh-avatar{
+    background: var(--gh-avatar) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.trend-3 .gh-avatar3{
+    background: var(--gh-avatar3) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.trend-4 .gh-avatar4{
+    background: var(--gh-avatar4) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
